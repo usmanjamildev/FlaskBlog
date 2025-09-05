@@ -32,3 +32,12 @@ run.py # Entry point to run the app
    ```bash
    git clone https://github.com/your-username/flask-blog.git
    cd flask-blog
+python -m venv venv
+venv\Scripts\activate   # On Windows
+source venv/bin/activate  # On Linux/Mac
+pip install -r requirements.txt
+python
+>>> from flaskblog import db, app
+>>> with app.app_context():
+...     db.create_all()
+python run.py
