@@ -16,12 +16,3 @@ It allows users to create accounts, log in, write blog posts, and manage their p
 - **Frontend**: Bootstrap 5, Jinja2 templates  
 - **Database**: SQLite (default), easily swappable with other SQL databases  
 
-## 📂 Project Structure
-flask-blog/
-│
-├── app.py         # Main Flask app (single file)
-├── templates/     # HTML templates
-├── static/        # CSS, JS, images (optional)
-├── site.db        # SQLite database (auto-created)
-└── requirements.txt
-
