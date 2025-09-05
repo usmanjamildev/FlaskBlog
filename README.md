@@ -17,3 +17,18 @@ It allows users to create accounts, log in, write blog posts, and manage their p
 - **Database**: SQLite (default), easily swappable with other SQL databases  
 
 ## 📂 Project Structure
+flaskblog/
+│
+├── init.py # App factory and extensions
+├── models.py # Database models (User, Post)
+├── routes.py # Application routes
+├── templates/ # HTML templates
+├── static/ # CSS, JS, images
+└── site.db # SQLite database
+run.py # Entry point to run the app
+
+## ⚡ Getting Started
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/flask-blog.git
+   cd flask-blog
