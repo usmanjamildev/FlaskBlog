@@ -1,0 +1,92 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div>
+  <!-- Hero Section -->
+  <div class="text-center mb-5">
+    <h1 class="display-4 fw-bold">
+      About
+      <span style="font-family: Georgia, 'Times New Roman', Times, serif;" class="text-dark">
+        Log<span style="font-family: Georgia, 'Times New Roman', Times, serif;" class="text-success">Space</span>
+      </span>
+    </h1>
+    <p class="lead text-muted">
+      A space where ideas, stories, and knowledge find their voice.
+    </p>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-8 col-md-10">
+        <div class="bg-white p-4 p-md-5 shadow-lg rounded">
+          <h2 class="fw-semibold mb-3">Our Vision</h2>
+          <p class="text-secondary fs-5">
+            LogSpace is built with a single mission: to make publishing clean,
+            modern, and inspiring. Just like the best spaces for creativity,
+            we keep things minimal so that your words remain the focus.
+          </p>
+
+          <h2 class="fw-semibold mt-5 mb-3">Why LogSpace?</h2>
+          <p class="text-secondary fs-5">
+            Writing should be effortless. LogSpace strips away the clutter and
+            distractions found elsewhere, giving creators the freedom to focus
+            purely on their ideas, and readers the joy of a beautiful, seamless
+            experience.
+          </p>
+
+          <blockquote class="blockquote border-start border-3 ps-3 my-4">
+            <p class="mb-0 fst-italic fs-5">
+              “Your thoughts deserve a space. Welcome to LogSpace.”
+            </p>
+          </blockquote>
+
+          <p class="text-secondary fs-5">
+            Whether you're an experienced author or just starting out, LogSpace
+            is your home for meaningful storytelling. Every post is an opportunity
+            to spark curiosity, ignite conversations, and leave a lasting impact.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image + Text Section -->
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <img
+          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+          alt="Writing inspiration"
+          class="img-fluid rounded shadow-sm"
+        />
+      </div>
+      <div class="col-md-6">
+        <h2 class="fw-bold mb-3">Our Community</h2>
+        <p class="text-secondary fs-5">
+          LogSpace isn’t just a blog app — it’s a gathering of minds.
+          Readers and writers come together here to exchange ideas, inspire one
+          another, and amplify voices that matter. In LogSpace, your words don’t
+          just live, they thrive.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer-style Call to Action -->
+  <section class="bg-light py-5 text-center">
+    <div class="container">
+      <h2 class="fw-bold mb-3">
+        Start Your Journey with
+        <span style="font-family: Georgia, 'Times New Roman', Times, serif;" class="text-dark">
+          Log<span style="font-family: Georgia, 'Times New Roman', Times, serif;" class="text-success">Space</span>
+        </span>
+      </h2>
+      <p class="text-muted mb-4 fs-5">
+        Join a growing community of creators and readers who believe in the
+        power of words.
+      </p>
+      <a href="{{ url_for('register') }}" class="btn btn-dark btn-lg rounded-pill px-4">
+        Get Started
+      </a>
+    </div>
+  </section>
+</div>
+{% endblock content %}

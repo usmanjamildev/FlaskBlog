@@ -1,0 +1,110 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<!-- Guest Landing Page (if no posts / not logged in) -->
+{% if not current_user.is_authenticated %}
+<section class="bg-light text-dark text-center py-5 mb-5 rounded shadow">
+  <div class="container">
+    <h1 class="display-3 fw-bold mb-3">
+      Welcome to
+      <span style="font-family: Georgia, 'Times New Roman', Times, serif;" class="text-dark">
+        Log<span class="text-success">Space</span>
+      </span>
+    </h1>
+    <p class="lead text-muted mx-auto" style="max-width: 700px;">
+      A modern space for writers and thinkers to share their stories and connect with readers.
+    </p>
+    <a href="{{ url_for('register') }}" class="btn btn-success btn-lg rounded-pill px-4">
+      Get Started
+    </a>
+  </div>
+</section>
+
+<div class="container mb-5">
+  <div class="row text-center">
+    <div class="col-md-4 mb-4">
+      <div class="p-4 h-100 border rounded shadow-sm">
+        <h3 class="fw-bold">Write Freely</h3>
+        <p class="text-muted">Share your ideas with a distraction-free editor designed for clarity and focus.</p>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="p-4 h-100 border rounded shadow-sm">
+        <h3 class="fw-bold">Connect Globally</h3>
+        <p class="text-muted">Join a growing community of readers and writers from around the world.</p>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="p-4 h-100 border rounded shadow-sm">
+        <h3 class="fw-bold">Grow Your Voice</h3>
+        <p class="text-muted">Build your presence, engage with readers, and let your stories make an impact.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="bg-light py-5 text-center rounded shadow-sm">
+  <div class="container">
+    <h2 class="fw-bold mb-3">
+      Start your journey with
+      <span style="font-family: Georgia, 'Times New Roman', Times, serif;" class="text-dark">
+        Log<span class="text-success">Space</span>
+      </span>
+    </h2>
+    <p class="text-muted mb-4 fs-5">
+      Your words matter. Begin today and inspire the world with your thoughts.
+    </p>
+    <a href="{{ url_for('register') }}" class="btn btn-success btn-lg rounded-pill px-4">
+      Create an Account
+    </a>
+  </div>
+</section>
+
+{% else %}
+
+<!-- Feed for logged-in users -->
+{% for post in posts.items %}
+<div class="card mb-4 shadow-sm rounded-3">
+  <div class="card-body d-flex">
+    <img
+      class="rounded-circle me-3"
+      src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}"
+      alt="{{ post.author.username }}"
+      style="width: 60px; height: 60px; object-fit: cover;"
+      onerror="this.onerror=null; this.src='/static/diverse-user-avatars.png';"
+    >
+    <div class="flex-grow-1">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <a class="fw-bold text-decoration-none text-success" href="{{ url_for('user_posts', username=post.author.username) }}">
+          {{ post.author.username }}
+        </a>
+        <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+      </div>
+      <h5 class="card-title mb-2">
+        <a class="text-dark text-decoration-none" href="{{ url_for('post', post_id=post.id) }}">
+          {{ post.title }}
+        </a>
+      </h5>
+      <p class="card-text">{{ post.content }}</p>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+<!-- Pagination -->
+<div class="text-center mt-4">
+  {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+    {% if page_num %}
+      {% if posts.page == page_num %}
+        <a class="btn btn-success mb-4 me-2" href="{{ url_for('home', page=page_num) }}">{{ page_num }}</a>
+      {% else %}
+        <a class="btn btn-outline-success mb-4 me-2" href="{{ url_for('home', page=page_num) }}">{{ page_num }}</a>
+      {% endif %}
+    {% else %}
+      <span class="mx-2">...</span>
+    {% endif %}
+  {% endfor %}
+</div>
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="d-flex justify-content-center align-items-center bg-light" style="min-height: 100vh;">
+  <div class="card shadow-lg border-0 rounded-4 p-4" style="max-width: 500px; width: 100%;">
+
+    <!-- Title -->
+    <div class="text-center mb-3">
+      <h2 class="fw-bold">Welcome Back</h2>
+    </div>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <!-- Login Form -->
+    <form method="POST" action="">
+      {{ form.hidden_tag() }}
+
+      <!-- Email -->
+      <div class="mb-3">
+        {{ form.email.label(class="form-label fw-semibold") }}
+        {% if form.email.errors %}
+          {{ form.email(class="form-control form-control-lg rounded-3 is-invalid") }}
+          <div class="invalid-feedback">
+            {% for error in form.email.errors %}
+              <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+        {% else %}
+          {{ form.email(class="form-control form-control-lg rounded-3") }}
+        {% endif %}
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        {{ form.password.label(class="form-label fw-semibold") }}
+        {% if form.password.errors %}
+          {{ form.password(class="form-control form-control-lg rounded-3 is-invalid") }}
+          <div class="invalid-feedback">
+            {% for error in form.password.errors %}
+              <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+        {% else %}
+          {{ form.password(class="form-control form-control-lg rounded-3") }}
+        {% endif %}
+      </div>
+
+      <!-- Remember Me -->
+      <div class="form-check mb-4">
+        {{ form.remember(class="form-check-input") }}
+        {{ form.remember.label(class="form-check-label") }}
+      </div>
+
+      <!-- Submit -->
+      <div class="d-grid mb-3">
+        {{ form.submit(class="btn btn-success btn-lg rounded-3") }}
+      </div>
+
+      <!-- Forgot Password -->
+      <div class="text-center">
+        <small class="text-muted">
+          <a href="{{ url_for('reset_request') }}" class="text-decoration-none text-success fw-semibold">
+            Forgot Password?
+          </a>
+        </small>
+      </div>
+    </form>
+
+    <!-- Register Redirect -->
+    <div class="text-center border-top pt-3 mt-3">
+      <small class="text-muted">
+        Need an account?
+        <a class="ms-2 text-decoration-none fw-semibold text-success" href="{{ url_for('register') }}">
+          Sign Up Now
+        </a>
+      </small>
+    </div>
+  </div>
+</div>
+{% endblock content %}
