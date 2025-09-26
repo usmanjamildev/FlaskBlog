@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
+<<<<<<< HEAD
 <div class="d-flex justify-content-center align-items-center bg-light" style="min-height: 100vh;">
   <div class="card shadow-lg border-0 rounded-4 p-4" style="max-width: 500px; width: 100%;">
 
@@ -71,5 +72,49 @@
       </small>
     </div>
   </div>
+=======
+<div class="content-section">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="mb-4">
+            <legend class="border-bottom mb-4">Reset Password</legend>
+
+            <!-- Password -->
+            <div class="mb-3">
+                {{ form.password.label(class="form-label") }}
+                {% if form.password.errors %}
+                {{ form.password(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.password.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.password(class="form-control") }}
+                {% endif %}
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="mb-3">
+                {{ form.confirm_password.label(class="form-label") }}
+                {% if form.confirm_password.errors %}
+                {{ form.confirm_password(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.confirm_password.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.confirm_password(class="form-control") }}
+                {% endif %}
+            </div>
+        </fieldset>
+
+        <!-- Submit Button -->
+        <div class="mb-3">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+>>>>>>> 2d9e6b4dcdbcce26c54209632eac69b4627f0b16
 </div>
 {% endblock content %}

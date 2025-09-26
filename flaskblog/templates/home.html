@@ -1,5 +1,6 @@
 {% extends 'layout.html' %}
 {% block content %}
+<<<<<<< HEAD
 
 <!-- Guest Landing Page (if no posts / not logged in) -->
 {% if not current_user.is_authenticated %}
@@ -107,4 +108,40 @@
 </div>
 {% endif %}
 
+=======
+{% for post in posts.items %}
+<div class="card mb-4 shadow-sm rounded-3">
+    <div class="card-body d-flex">
+        <img
+                class="rounded-circle me-3"
+                src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}"
+                alt="{{ post.author.username }}"
+                style="width: 60px; height: 60px; object-fit: cover;"
+        >
+        <div class="flex-grow-1">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <a class="fw-bold text-decoration-none" href="{{ url_for('user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+                <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+            </div>
+            <h5 class="card-title mb-2">
+                <a class="text-dark text-decoration-none" href="{{ url_for('post', post_id=post.id) }}">{{ post.title
+                    }}</a>
+            </h5>
+            <p class="card-text">{{ post.content }}</p>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+{% if page_num %}
+{% if posts.page == page_num %}
+<a class="btn btn-info mb-4" href="{{ url_for('home', page=page_num) }}">{{ page_num }}</a>
+{% else %}
+<a class="btn btn-outline-info mb-4" href="{{ url_for('home', page=page_num) }}">{{ page_num }}</a>
+{% endif %}
+{% else %}
+...
+{% endif %}
+{% endfor %}
+>>>>>>> 2d9e6b4dcdbcce26c54209632eac69b4627f0b16
 {% endblock content %}
