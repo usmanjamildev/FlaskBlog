@@ -1,15 +1,10 @@
 {% extends "layout.html" %}
 {% block content %}
-<<<<<<< HEAD
-<div class="d-flex justify-content-center align-items-center bg-light" style="min-height: 100vh;">
+<div class="d-flex justify-content-center align-items-center bg-light mb-5" >
   <div class="card shadow-lg border-0 rounded-4 p-4" style="max-width: 500px; width: 100%;">
-
-    <!-- Title -->
     <div class="text-center mb-3">
       <h2 class="fw-bold">Welcome Back</h2>
     </div>
-
-    <!-- Flash Messages -->
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
         {% for category, message in messages %}
@@ -88,68 +83,4 @@
   </div>
 </div>
 {% endblock content %}
-=======
-<div class="content-section">
-    <form method="POST" action="">
-        {{ form.hidden_tag() }}
-        <fieldset class="mb-4">
-            <legend class="border-bottom mb-4">Log In</legend>
 
-            <!-- Email Field -->
-            <div class="mb-3">
-                {{ form.email.label(class="form-label") }}
-                {% if form.email.errors %}
-                    {{ form.email(class="form-control form-control-lg is-invalid") }}
-                    <div class="invalid-feedback">
-                        {% for error in form.email.errors %}
-                            <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    {{ form.email(class="form-control form-control-lg") }}
-                {% endif %}
-            </div>
-
-            <!-- Password Field -->
-            <div class="mb-3">
-                {{ form.password.label(class="form-label") }}
-                {% if form.password.errors %}
-                    {{ form.password(class="form-control form-control-lg is-invalid") }}
-                    <div class="invalid-feedback">
-                        {% for error in form.password.errors %}
-                            <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    {{ form.password(class="form-control form-control-lg") }}
-                {% endif %}
-            </div>
-
-            <!-- Remember Me Checkbox -->
-            <div class="form-check">
-                {{ form.remember(class="form-check-input") }}
-                {{ form.remember.label(class="form-check-label") }}
-            </div>
-        </fieldset>
-
-        <!-- Submit Button -->
-        <div class="mb-3">
-            {{ form.submit(class="btn btn-outline-info") }}
-        </div>
-
-        <!-- Forgot Password Link -->
-        <small class="text-muted ms-2">
-            <a href="{{ url_for('reset_request') }}">Forgot Password?</a>
-        </small>
-    </form>
-</div>
-
-<!-- Register Redirect -->
-<div class="border-top pt-3">
-    <small class="text-muted">
-        Need an account?
-        <a class="ms-2" href="{{ url_for('register') }}">Sign Up Now</a>
-    </small>
-</div>
-{% endblock content %}
->>>>>>> 2d9e6b4dcdbcce26c54209632eac69b4627f0b16

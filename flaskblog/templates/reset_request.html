@@ -1,7 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-<<<<<<< HEAD
-<div class="d-flex justify-content-center bg-light">
+<div class="d-flex justify-content-center bg-light mb-5">
   <div class="card shadow-lg border-0 rounded-4 p-4 mt-2" style="max-width: 500px; width: 100%;">
 
     <!-- Title -->
@@ -40,14 +39,11 @@
           {{ form.email(class="form-control form-control-lg rounded-3") }}
         {% endif %}
       </div>
-
       <!-- Submit -->
       <div class="d-grid mb-3">
         {{ form.submit(class="btn btn-success btn-lg rounded-3") }}
       </div>
     </form>
-
-    <!-- Back to Login -->
     <div class="text-center border-top pt-3 mt-3">
       <small class="text-muted">
         Remember your password?
@@ -59,32 +55,3 @@
   </div>
 </div>
 {% endblock content %}
-=======
-<div class="content-section">
-    <form method="POST" action="">
-        {{ form.hidden_tag() }}
-        <fieldset class="mb-4">
-            <legend class="border-bottom mb-4">Reset Password</legend>
-            <!-- Email Field -->
-            <div class="mb-3">
-                {{ form.email.label(class="form-label") }}
-                {% if form.email.errors %}
-                    {{ form.email(class="form-control form-control-lg is-invalid") }}
-                    <div class="invalid-feedback">
-                        {% for error in form.email.errors %}
-                            <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    {{ form.email(class="form-control form-control-lg") }}
-                {% endif %}
-            </div>
-        </fieldset>
-        <!-- Submit Button -->
-        <div class="mb-3">
-            {{ form.submit(class="btn btn-outline-info") }}
-        </div>
-    </form>
-</div>
-{% endblock content %}
->>>>>>> 2d9e6b4dcdbcce26c54209632eac69b4627f0b16
